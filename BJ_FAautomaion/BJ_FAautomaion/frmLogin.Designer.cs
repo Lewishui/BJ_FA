@@ -44,6 +44,7 @@
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.dockPanel2 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -63,13 +64,14 @@
             this.dockPanel2.ActiveAutoHideContent = null;
             this.dockPanel2.AutoScroll = true;
             this.dockPanel2.BackColor = System.Drawing.SystemColors.Control;
+            this.dockPanel2.BackgroundImage = global::BJ_FAautomaion.Properties.Resources.psd24876副本;
             this.dockPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dockPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel2.DockBackColor = System.Drawing.Color.Transparent;
             this.dockPanel2.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.dockPanel2.Location = new System.Drawing.Point(0, 28);
             this.dockPanel2.Name = "dockPanel2";
-            this.dockPanel2.Size = new System.Drawing.Size(966, 467);
+            this.dockPanel2.Size = new System.Drawing.Size(1023, 467);
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -161,7 +163,7 @@
             this.toolStripDropDownButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(966, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1023, 28);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -191,15 +193,17 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(966, 495);
+            this.panel1.Size = new System.Drawing.Size(1023, 495);
             this.panel1.TabIndex = 12;
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 495);
+            this.BackgroundImage = global::BJ_FAautomaion.Properties.Resources.psd24876副本1;
+            this.ClientSize = new System.Drawing.Size(1023, 495);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "计划部财务自动化";

@@ -13,3 +13,25 @@ D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.c
 D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.exe
 D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.pdb
 D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.exe.config
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.exe
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.pdb
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.exe
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.pdb
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\IrisSkin2.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\log4net.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.csprojResolveAssemblyReference.cache
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmAboutBox.resources
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmLogin.resources
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmMain.resources
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.Properties.Resources.resources
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.csproj.GenerateResource.Cache
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmMessageShow.resources
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Buiness.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Common.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.DB.dll
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Buiness.pdb
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Common.pdb
+D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.DB.pdb

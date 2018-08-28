@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FA.Common\FA.Common.csproj">
+      <Project>{2a43ed9f-c8e8-4329-a720-28edcd30416a}</Project>
+      <Name>FA.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FA.DB\FA.DB.csproj">
       <Project>{ed233de7-6011-4434-8d3f-acd7bdeb9f27}</Project>
       <Name>FA.DB</Name>
