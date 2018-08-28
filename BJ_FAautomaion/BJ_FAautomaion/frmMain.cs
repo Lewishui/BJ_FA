@@ -1,4 +1,5 @@
-﻿using FA.Buiness;
+﻿using DCTS.CustomComponents;
+using FA.Buiness;
 using FA.Common;
 using FA.DB;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
@@ -31,12 +33,14 @@ namespace BJ_FAautomaion
 
         List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zhuyao_Result;
 
+        private SortableBindingList<clszichanfuzaibiaoinfo> sortablezichanfuzaibiaoList;
+
+
         public frmMain()
         {
             InitializeComponent();
         }
-
-
+        
         private void InitialBackGroundWorker()
         {
             bgWorker = new BackgroundWorker();
@@ -101,26 +105,8 @@ namespace BJ_FAautomaion
                 // 数据读取成功后在画面显示
                 if (blnBackGroundWorkIsOK)
                 {
-                    this.dataGridView.DataSource = null;
-                    this.dataGridView.AutoGenerateColumns = false;
+                    InitializeOrderData();
 
-                    if (zichanfuzaibiao_Result.Count != 0)
-                    {
-                        this.dataGridView.DataSource = zichanfuzaibiao_Result;
-                        Show_label_pbStatus(zichanfuzaibiao_Result.Count, 0);
-
-                    }
-
-                    this.dataGridView1.DataSource = null;
-                    this.dataGridView1.AutoGenerateColumns = false;
-
-                    if (zhuyao_Result.Count != 0)
-                    {
-
-                        this.dataGridView1.DataSource = zhuyao_Result;
-                        //Show_label_pbStatus(zhuyao_Result.Count, 0);
-
-                    }
                 }
             }
             catch (Exception ex)
@@ -160,6 +146,19 @@ namespace BJ_FAautomaion
 
             zhuyao_Result = BusinessHelp.zhuyao_Result;
             zichanfuzaibiao_Result = BusinessHelp.zichanfuzaibiao_Result;
+            Data_maintain();
+
+            DateTime FinishTime = DateTime.Now;
+            TimeSpan s = DateTime.Now - oldDate;
+            string timei = s.Minutes.ToString() + ":" + s.Seconds.ToString();
+            string Showtime = clsShowMessage.MSG_029 + timei.ToString();
+            bgWorker.ReportProgress(clsConstant.Thread_Progress_OK, clsShowMessage.MSG_009 + "\r\n" + Showtime);
+
+
+        }
+
+        private void Data_maintain()
+        {
 
             #region 资产总额
             List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> cloumnlistSQ = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("资产总额"));
@@ -202,11 +201,11 @@ namespace BJ_FAautomaion
 
                 double dd = 0;
                 double f4 = 0;
-                double H4= 0;
+                double H4 = 0;
                 //资产总额--本月完成
                 List<clszichanfuzaibiaoinfo> zcfzb = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmuF != null && sQ.xiangmuF.Contains("负 债 合 计"));
 
-                if (zcfzb.Count==1&&zcfzb[0].qimojineH != "")
+                if (zcfzb.Count == 1 && zcfzb[0].qimojineH != "")
                     dd = Convert.ToDouble(zcfzb[0].qimojineH) / 10000;
 
                 fz[0].benyuewancheng = dd.ToString();
@@ -225,21 +224,34 @@ namespace BJ_FAautomaion
                 double I4 = f4 - H4;
 
                 cloumnlistSQ[0].tongbizengzhang = I4.ToString();
-                
+
             }
+
+            #endregion
+
+            #region 资产负债率
+            double d5 = Convert.ToDouble(fz[0].benyuewancheng) / Convert.ToDouble(cloumnlistSQ[0].benyuewancheng);
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zcfzl = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("资产负债率"));
+            zcfzl[0].benyuewancheng = d5.ToString();
+
+            double f5 = Convert.ToDouble(fz[0].leijiwanchenghuoqimoshu) / Convert.ToDouble(cloumnlistSQ[0].leijiwanchenghuoqimoshu);
+            zcfzl[0].leijiwanchenghuoqimoshu = f5.ToString();
+
+            double h5 = Convert.ToDouble(fz[0].shangniantongqileijiwancheng) / Convert.ToDouble(cloumnlistSQ[0].shangniantongqileijiwancheng);
+            zcfzl[0].shangniantongqileijiwancheng = h5.ToString();
+
+            double I5 = f5 - h5;
+
+            zcfzl[0].tongbizengzhang = I5.ToString();
+            #endregion
+
+            #region 营业收入
+
 
 
 
 
             #endregion
-
-            DateTime FinishTime = DateTime.Now;
-            TimeSpan s = DateTime.Now - oldDate;
-            string timei = s.Minutes.ToString() + ":" + s.Seconds.ToString();
-            string Showtime = clsShowMessage.MSG_029 + timei.ToString();
-            bgWorker.ReportProgress(clsConstant.Thread_Progress_OK, clsShowMessage.MSG_009 + "\r\n" + Showtime);
-
-
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -256,5 +268,122 @@ namespace BJ_FAautomaion
                 Show_label_pbStatus(dataGridView1.RowCount, 1);
             }
         }
+
+
+        private void InitializeOrderData()
+        {
+            Data_maintain();
+
+            this.dataGridView.DataSource = null;
+            this.dataGridView.AutoGenerateColumns = false;
+
+            if (zichanfuzaibiao_Result.Count != 0)
+            {
+                sortablezichanfuzaibiaoList = new SortableBindingList<clszichanfuzaibiaoinfo>(zichanfuzaibiao_Result);
+                this.bindingSource1.DataSource = this.sortablezichanfuzaibiaoList;
+
+
+                this.dataGridView.DataSource = this.bindingSource1;
+                Show_label_pbStatus(zichanfuzaibiao_Result.Count, 0);
+
+            }
+
+            this.dataGridView1.DataSource = null;
+            this.dataGridView1.AutoGenerateColumns = false;
+
+            if (zhuyao_Result.Count != 0)
+            {
+
+                this.dataGridView1.DataSource = zhuyao_Result;
+                //Show_label_pbStatus(zhuyao_Result.Count, 0);
+
+            }
+        
+        
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            InitializeOrderData();
+
+        }
+
+
+        private void downcsv(DataGridView dataGridView)
+        {
+
+            if (dataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("Sorry , No Data Output !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = ".csv";
+            saveFileDialog.Filter = "csv|*.csv";
+            string strFileName = "System  Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            saveFileDialog.FileName = strFileName;
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                strFileName = saveFileDialog.FileName.ToString();
+            }
+            else
+            {
+                return;
+            }
+            FileStream fa = new FileStream(strFileName, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fa, Encoding.Unicode);
+            string delimiter = "\t";
+            string strHeader = "";
+            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            {
+                strHeader += dataGridView.Columns[i].HeaderText + delimiter;
+            }
+            sw.WriteLine(strHeader);
+
+            //output rows data
+            for (int j = 0; j < dataGridView.Rows.Count; j++)
+            {
+                string strRowValue = "";
+
+                for (int k = 0; k < dataGridView.Columns.Count; k++)
+                {
+                    if (dataGridView.Rows[j].Cells[k].Value != null)
+                    {
+                        strRowValue += dataGridView.Rows[j].Cells[k].Value.ToString().Replace("\r\n", " ").Replace("\n", "") + delimiter;
+                        if (dataGridView.Rows[j].Cells[k].Value.ToString() == "LIP201507-35")
+                        {
+
+                        }
+
+                    }
+                    else
+                    {
+                        strRowValue += dataGridView.Rows[j].Cells[k].Value + delimiter;
+                    }
+                }
+                sw.WriteLine(strRowValue);
+            }
+            sw.Close();
+            fa.Close();
+            MessageBox.Show("下载完成 ！", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+             int s = this.tabControl1.SelectedIndex;
+             if (s == 0)
+             {
+                 downcsv(dataGridView);
+             }
+            else if (s == 1)
+             {
+                 downcsv(dataGridView1);
+             }
+        }
+
+
+       
     }
 }

@@ -18,3 +18,5 @@ D:\Dev Project\BJ_FA\BJ_FAautomaion\FA.Buiness\obj\Debug\FA.Buiness.dll
 D:\Dev Project\BJ_FA\BJ_FAautomaion\FA.Buiness\obj\Debug\FA.Buiness.pdb
 D:\Dev Project\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.Common.dll
 D:\Dev Project\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.Common.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.Common.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.Common.pdb

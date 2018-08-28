@@ -35,3 +35,10 @@ D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.DB.dll
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Buiness.pdb
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Common.pdb
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.DB.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Buiness.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Common.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.DB.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Buiness.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.Common.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\FA.DB.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmMessageShow.resources

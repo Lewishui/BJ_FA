@@ -36,6 +36,7 @@ namespace BJ_FAautomaion
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             if (frmMain == null)
             {
                 frmMain = new frmMain();
