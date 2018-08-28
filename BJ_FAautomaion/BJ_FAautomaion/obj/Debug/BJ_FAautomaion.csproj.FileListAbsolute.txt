@@ -1,0 +1,15 @@
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.exe.config
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.exe
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\IrisSkin2.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\log4net.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.csprojResolveAssemblyReference.cache
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmAboutBox.resources
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmLogin.resources
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmMain.resources
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.Properties.Resources.resources
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.csproj.GenerateResource.Cache
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.exe
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\Microsoft.Office.Interop.Excel.dll

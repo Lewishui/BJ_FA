@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BJ_FAautomaion", "BJ_FAautomaion\BJ_FAautomaion.csproj", "{5BC16567-C2A2-4585-8507-71BF4F5E2D42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.Buiness", "FA.Buiness\FA.Buiness.csproj", "{E344E05D-AE7A-4454-832A-A3EC1ADB76C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.DB", "FA.DB\FA.DB.csproj", "{ED233DE7-6011-4434-8D3F-ACD7BDEB9F27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BC16567-C2A2-4585-8507-71BF4F5E2D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC16567-C2A2-4585-8507-71BF4F5E2D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC16567-C2A2-4585-8507-71BF4F5E2D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC16567-C2A2-4585-8507-71BF4F5E2D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E344E05D-AE7A-4454-832A-A3EC1ADB76C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E344E05D-AE7A-4454-832A-A3EC1ADB76C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E344E05D-AE7A-4454-832A-A3EC1ADB76C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E344E05D-AE7A-4454-832A-A3EC1ADB76C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED233DE7-6011-4434-8D3F-ACD7BDEB9F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED233DE7-6011-4434-8D3F-ACD7BDEB9F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED233DE7-6011-4434-8D3F-ACD7BDEB9F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED233DE7-6011-4434-8D3F-ACD7BDEB9F27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

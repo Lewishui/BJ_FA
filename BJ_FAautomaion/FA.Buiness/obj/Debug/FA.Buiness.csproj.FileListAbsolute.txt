@@ -1,0 +1,9 @@
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\obj\Debug\FA.Buiness.csprojResolveAssemblyReference.cache
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.Buiness.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.Buiness.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.DB.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\log4net.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\bin\Debug\FA.DB.pdb
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\obj\Debug\FA.Buiness.dll
+D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Buiness\obj\Debug\FA.Buiness.pdb
