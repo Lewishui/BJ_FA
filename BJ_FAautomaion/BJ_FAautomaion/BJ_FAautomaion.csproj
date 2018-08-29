@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico.ico" />
+    <None Include="Resources\icon_find.gif" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FA.Buiness\FA.Buiness.csproj">

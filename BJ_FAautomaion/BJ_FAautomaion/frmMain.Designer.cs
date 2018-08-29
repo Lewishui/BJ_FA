@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -39,7 +39,6 @@
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,13 +59,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.filterButton = new System.Windows.Forms.Button();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -92,6 +86,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.filterButton = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
@@ -145,8 +140,7 @@
             this.toolStripButton2,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton1,
-            this.toolStripButton3});
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -196,15 +190,8 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(79, 25);
-            this.toolStripButton1.Text = "打印";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(79, 25);
-            this.toolStripButton3.Text = "PDF V";
+            this.toolStripButton1.Text = "生报表";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // groupBox1
             // 
@@ -253,8 +240,8 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -275,10 +262,10 @@
             this.nianchujineJ,
             this.bianzhidanwei});
             this.dataGridView.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView.Location = new System.Drawing.Point(3, 141);
+            this.dataGridView.Location = new System.Drawing.Point(3, 80);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.Size = new System.Drawing.Size(922, 273);
+            this.dataGridView.Size = new System.Drawing.Size(922, 334);
             this.dataGridView.TabIndex = 71;
             // 
             // danwei
@@ -376,12 +363,8 @@
             // 
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.filterButton);
-            this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.label25);
-            this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.textBox6);
@@ -397,52 +380,12 @@
             this.groupBox2.TabIndex = 72;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Action";
-            //this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // filterButton
-            // 
-            this.filterButton.Location = new System.Drawing.Point(812, 18);
-            this.filterButton.Name = "filterButton";
-            this.filterButton.Size = new System.Drawing.Size(81, 41);
-            this.filterButton.TabIndex = 78;
-            this.filterButton.Text = "Find";
-            this.filterButton.UseVisualStyleBackColor = true;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(808, 106);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(0, 20);
-            this.label26.TabIndex = 91;
-            // 
-            // label25
-            // 
-            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(746, 106);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(56, 20);
-            this.label25.TabIndex = 90;
-            this.label25.Text = "Count:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(590, 106);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(0, 20);
-            this.label23.TabIndex = 87;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(296, 106);
+            this.label22.Location = new System.Drawing.Point(554, 54);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(0, 20);
             this.label22.TabIndex = 86;
@@ -451,40 +394,30 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(110, 106);
+            this.label21.Location = new System.Drawing.Point(112, 54);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(0, 20);
             this.label21.TabIndex = 85;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(421, 106);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(169, 20);
-            this.label20.TabIndex = 84;
-            this.label20.Text = "Difference(value/cout):";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(222, 106);
+            this.label19.Location = new System.Drawing.Point(361, 54);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 20);
+            this.label19.Size = new System.Drawing.Size(173, 20);
             this.label19.TabIndex = 83;
-            this.label19.Text = "Receipt:";
+            this.label19.Text = "负债和所有者权益总计:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(11, 106);
+            this.label18.Location = new System.Drawing.Point(13, 54);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(93, 20);
+            this.label18.Size = new System.Drawing.Size(77, 20);
             this.label18.TabIndex = 82;
-            this.label18.Text = "SAP(F-link):";
+            this.label18.Text = "资产总计:";
             // 
             // textBox6
             // 
@@ -501,7 +434,7 @@
             this.stockInDateTimePicker1.Name = "stockInDateTimePicker1";
             this.stockInDateTimePicker1.Size = new System.Drawing.Size(109, 21);
             this.stockInDateTimePicker1.TabIndex = 77;
-            this.stockInDateTimePicker1.Value = new System.DateTime(2017, 3, 31, 0, 0, 0, 0);
+            this.stockInDateTimePicker1.Value = new System.DateTime(2018, 9, 30, 0, 0, 0, 0);
             // 
             // label4
             // 
@@ -519,7 +452,7 @@
             this.stockOutDateTimePicker.Name = "stockOutDateTimePicker";
             this.stockOutDateTimePicker.Size = new System.Drawing.Size(114, 21);
             this.stockOutDateTimePicker.TabIndex = 75;
-            this.stockOutDateTimePicker.Value = new System.DateTime(2017, 3, 1, 0, 0, 0, 0);
+            this.stockOutDateTimePicker.Value = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -553,8 +486,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -669,13 +602,24 @@
             this.backgroundWorker2.WorkerReportsProgress = true;
             this.backgroundWorker2.WorkerSupportsCancellation = true;
             // 
+            // filterButton
+            // 
+            this.filterButton.BackgroundImage = global::BJ_FAautomaion.Properties.Resources.icon_find;
+            this.filterButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.filterButton.Location = new System.Drawing.Point(812, 19);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(49, 22);
+            this.filterButton.TabIndex = 78;
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 495);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "frmMain";
             this.Text = "工作台";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -712,7 +656,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -720,12 +663,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox6;
