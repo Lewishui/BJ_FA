@@ -484,6 +484,35 @@ namespace BJ_FAautomaion
             }
 
             #endregion
+            #region 存货
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> ch = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("存货"));
+            if (ch.Count != 0 && ch.Count == 1)
+            {
+                double d10 = 0;
+                double f10 = 0;
+                double H10 = 0;
+                //资产总额--本月完成
+                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "应收账款");
+                if (lr.Count == 1 && lr[0].qimojine != "")
+                {
+                    d10 = Convert.ToDouble(lr[0].qimojine) / 10000;
+
+                    H10 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;
+                }
+                yszk[0].benyuewancheng = d10.ToString();
+
+                yszk[0].leijiwanchenghuoqimoshu = d10.ToString();
+
+                yszk[0].shangniantongqileijiwancheng = H10.ToString();
+
+                //同比增减
+                double I10 = d10 - H10;
+
+                yszk[0].tongbizengzhang = I10.ToString();
+            }
+
+            #endregion
+
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
