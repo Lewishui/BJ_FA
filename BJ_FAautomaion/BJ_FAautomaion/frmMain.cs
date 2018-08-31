@@ -188,7 +188,7 @@ namespace BJ_FAautomaion
 
 
         }
-
+     
         private void Data_maintain()
         {
 
@@ -261,13 +261,18 @@ namespace BJ_FAautomaion
 
             #region 资产负债率
             double d5 = Convert.ToDouble(fz[0].benyuewancheng) / Convert.ToDouble(cloumnlistSQ[0].benyuewancheng);
+            d5 = isNAN(d5);
+
             List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zcfzl = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("资产负债率"));
             zcfzl[0].benyuewancheng = d5.ToString();
 
             double f5 = Convert.ToDouble(fz[0].leijiwanchenghuoqimoshu) / Convert.ToDouble(cloumnlistSQ[0].leijiwanchenghuoqimoshu);
+
+            f5 = isNAN(f5);
             zcfzl[0].leijiwanchenghuoqimoshu = f5.ToString();
 
             double h5 = Convert.ToDouble(fz[0].shangniantongqileijiwancheng) / Convert.ToDouble(cloumnlistSQ[0].shangniantongqileijiwancheng);
+            h5 = isNAN(h5);
             zcfzl[0].shangniantongqileijiwancheng = h5.ToString();
 
             double I5 = f5 - h5;
@@ -323,6 +328,9 @@ namespace BJ_FAautomaion
                 lrze[0].shangniantongqileijiwancheng = H7.ToString();
 
                 double I7 = f7 - H7;
+                I7 = isNAN(I7);
+
+
                 lrze[0].tongbizengzhang = I7.ToString();
             }
 
@@ -386,7 +394,8 @@ namespace BJ_FAautomaion
                 qjfy[0].shangniantongqileijiwancheng = H8.ToString();
 
                 double I8 = f8 - H8;
-                lrze[0].tongbizengzhang = I8.ToString();
+                I8 = isNAN(I8);
+                qjfy[0].tongbizengzhang = I8.ToString();
             }
             #endregion
 
@@ -414,6 +423,7 @@ namespace BJ_FAautomaion
                 double total = (c39n / 10000) / (c5n / 10000);
 
                 d9 = total;
+                d9 = isNAN(d9);
                 zyywmll[0].benyuewancheng = d9.ToString();
                 //f9
                 double d39 = 0;
@@ -428,6 +438,7 @@ namespace BJ_FAautomaion
 
                 total = (d39 / 10000) / (d5n / 10000);
                 f9 = total;
+                f9 = isNAN(f9);
                 zyywmll[0].leijiwanchenghuoqimoshu = f9.ToString();
 
                 //h9
@@ -444,10 +455,12 @@ namespace BJ_FAautomaion
 
                 total = (e39 / 10000) / (e4n / 10000);
                 H9 = total;
-                zyywmll[0].leijiwanchenghuoqimoshu = H9.ToString();
+                H9 = isNAN(H9);
+                zyywmll[0].shangniantongqileijiwancheng = H9.ToString();
 
 
                 double I9 = f9 - H9;
+                I9 = isNAN(I9);
                 zyywmll[0].tongbizengzhang = I9.ToString();
             }
 
@@ -484,35 +497,306 @@ namespace BJ_FAautomaion
             }
 
             #endregion
+
             #region 存货
             List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> ch = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("存货"));
             if (ch.Count != 0 && ch.Count == 1)
             {
-                double d10 = 0;
-                double f10 = 0;
-                double H10 = 0;
+                double d11 = 0;
+                double f11 = 0;
+                double H11 = 0;
                 //资产总额--本月完成
-                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "应收账款");
+                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "存货");
                 if (lr.Count == 1 && lr[0].qimojine != "")
                 {
-                    d10 = Convert.ToDouble(lr[0].qimojine) / 10000;
+                    d11 = Convert.ToDouble(lr[0].qimojine) / 10000;
+                    f11 = d11;
 
-                    H10 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;
+                    H11 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;
                 }
-                yszk[0].benyuewancheng = d10.ToString();
+                ch[0].benyuewancheng = d11.ToString();
 
-                yszk[0].leijiwanchenghuoqimoshu = d10.ToString();
+                ch[0].leijiwanchenghuoqimoshu = d11.ToString();
 
-                yszk[0].shangniantongqileijiwancheng = H10.ToString();
+                ch[0].shangniantongqileijiwancheng = H11.ToString();
 
                 //同比增减
-                double I10 = d10 - H10;
+                double I11 = f11 - H11;
 
-                yszk[0].tongbizengzhang = I10.ToString();
+                ch[0].tongbizengzhang = I11.ToString();
             }
 
             #endregion
 
+            #region 科研投入占比
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> KYTRB = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("科研投入占比"));
+            if (KYTRB.Count != 0 && KYTRB.Count == 1)
+            {
+                double d12 = 0;
+                double f12 = 0;
+                double H12 = 0;
+                double C26 = 0;
+                double C5 = 0;
+                double D26 = 0;
+                double D5 = 0;
+                double E26 = 0;
+                double E5 = 0;
+                List<clsLirunjilirunfenpeibiao_info> lr = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("其中：研究与开发费"));
+                List<clsLirunjilirunfenpeibiao_info> lr2 = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("一、营业总收入"));
+                if (lr.Count == 1 && lr[0].benyueshu != "")
+                    C26 = Convert.ToDouble(lr[0].benyueshu);
+                if (lr2.Count == 1 && lr2[0].benyueshu != "")
+                    C5 = Convert.ToDouble(lr2[0].benyueshu);
+                d12 = C26 / C5;
+                d12 = isNAN(d12);
+                KYTRB[0].benyuewancheng = d12.ToString();
+
+
+                if (lr.Count == 1 && lr[0].bennianleijishu != "")
+                    D26 = Convert.ToDouble(lr[0].bennianleijishu);
+
+                if (lr2.Count == 1 && lr2[0].shangniantongqi != "")
+                    D5 = Convert.ToDouble(lr2[0].shangniantongqi);
+                f12 = D26 / D5;
+                f12 = isNAN(f12);
+                KYTRB[0].leijiwanchenghuoqimoshu = f12.ToString();
+                //H12
+
+                if (lr.Count == 1 && lr[0].shangniantongqi != "")
+                    E26 = Convert.ToDouble(lr[0].shangniantongqi);
+
+                if (lr2.Count == 1 && lr2[0].shangniantongqi != "")
+                    E5 = Convert.ToDouble(lr2[0].shangniantongqi);
+                H12 = E26 / E5;
+                H12 = isNAN(H12);
+                KYTRB[0].shangniantongqileijiwancheng = H12.ToString();
+
+                double I12 = f12 - H12;
+
+                I12 = isNAN(I12);
+
+                KYTRB[0].tongbizengzhang = I12.ToString();
+            }
+
+
+            #endregion
+
+            #region 净资产
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> JZC = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("净资产"));
+            if (JZC.Count != 0 && JZC.Count == 1)
+            {
+                double d13 = 0;
+                double f13 = 0;
+                double H13 = 0;
+                //资产总额--本月完成
+                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "所有者权益合计");
+
+                if (lr.Count == 1 && lr[0].qimojine != "")
+                {
+                    d13 = Convert.ToDouble(lr[0].qimojine) / 10000;
+                    f13 = d13;
+
+                    H13 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;
+                }
+                JZC[0].benyuewancheng = d13.ToString();
+
+                JZC[0].leijiwanchenghuoqimoshu = d13.ToString();
+
+                JZC[0].shangniantongqileijiwancheng = H13.ToString();
+
+                //同比增减
+                double I13 = f13 - H13;
+
+                JZC[0].tongbizengzhang = I13.ToString();
+            }
+
+            #endregion
+            #region 净资产收益率
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> JZCSYL = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("净资产收益率"));
+            if (JZCSYL.Count != 0 && JZCSYL.Count == 1)
+            {
+                double d14 = 0;
+                double f14 = 0;
+                double H14 = 0;
+                double G51 = 0;
+
+                double D51 = 0;
+                double E51 = 0;
+
+                List<clsLirunjilirunfenpeibiao_info> lr = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("净利润（净亏损以“－”号填列"));
+                if (lr.Count == 1 && lr[0].benyueshu != "")
+                    G51 = Convert.ToDouble(lr[0].benyueshu);
+
+                d14 = G51 / Convert.ToDouble(JZC[0].benyuewancheng);
+                d14 = isNAN(d14);
+                JZCSYL[0].benyuewancheng = d14.ToString();
+
+                List<clsLirunjilirunfenpeibiao_info> lr2 = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("净利润（净亏损以“－”号填列"));
+
+
+                if (lr2.Count == 1 && lr2[0].bennianleijishu != "")
+                    D51 = Convert.ToDouble(lr2[0].bennianleijishu);
+
+                f14 = D51 / 10000 / Convert.ToDouble(JZC[0].leijiwanchenghuoqimoshu);
+
+                f14 = isNAN(f14);
+                JZCSYL[0].leijiwanchenghuoqimoshu = f14.ToString();
+                //H14
+                if (lr2.Count == 1 && lr2[0].shangniantongqi != "")
+                    E51 = Convert.ToDouble(lr2[0].shangniantongqi);
+
+                H14 = E51 / 10000 / Convert.ToDouble(JZC[0].shangniantongqileijiwancheng);
+                H14 = isNAN(H14);
+
+                JZCSYL[0].shangniantongqileijiwancheng = H14.ToString();
+
+
+                double I14 = f14 - H14;
+                JZCSYL[0].tongbizengzhang = I14.ToString();
+            }
+
+
+            #endregion
+
+            #region 三项费用占收入比
+
+
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> SXFYZSRB = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("三项费用占收入比"));
+            if (qjfy.Count != 0 && qjfy.Count == 1)
+            {
+                double d15 = 0;
+                double f15 = 0;
+                double H15 = 0;
+                List<clsLirunjilirunfenpeibiao_info> xsfy = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("销售费用"));
+                List<clsLirunjilirunfenpeibiao_info> glfy = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("管理费用"));
+                List<clsLirunjilirunfenpeibiao_info> cwfy = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("财务费用"));
+                double c24 = 0;
+                double c25 = 0;
+                double c27 = 0;
+                double C5 = 0;
+                double D5 = 0;
+                double E5 = 0;
+                if (xsfy.Count == 1 && xsfy[0].benyueshu != "")
+                    c24 = Convert.ToDouble(xsfy[0].benyueshu);
+                if (glfy.Count == 1 && glfy[0].benyueshu != "")
+                    c25 = Convert.ToDouble(glfy[0].benyueshu);
+                if (cwfy.Count == 1 && cwfy[0].benyueshu != "")
+                    c27 = Convert.ToDouble(cwfy[0].benyueshu);
+
+                double total = c24 + c25 + c27;
+                List<clsLirunjilirunfenpeibiao_info> lr2 = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("一、营业总收入"));
+
+                if (lr2.Count == 1 && lr2[0].benyueshu != "")
+                    C5 = Convert.ToDouble(lr2[0].benyueshu);
+                if (lr2.Count == 1 && lr2[0].bennianleijishu != "")
+                    D5 = Convert.ToDouble(lr2[0].bennianleijishu);
+                if (lr2.Count == 1 && lr2[0].shangniantongqishu != "")
+                    E5 = Convert.ToDouble(lr2[0].shangniantongqishu);
+
+
+                d15 = total / C5;
+
+                 d15 = isNAN(d15);
+              
+                SXFYZSRB[0].benyuewancheng = d15.ToString();
+                //f8
+                double d24 = 0;
+                double d25 = 0;
+                double d27 = 0;
+
+                if (xsfy.Count == 1 && xsfy[0].bennianleijishu != "")
+                    d24 = Convert.ToDouble(xsfy[0].bennianleijishu);
+                if (glfy.Count == 1 && glfy[0].bennianleijishu != "")
+                    d25 = Convert.ToDouble(glfy[0].bennianleijishu);
+                if (cwfy.Count == 1 && cwfy[0].bennianleijishu != "")
+                    d27 = Convert.ToDouble(cwfy[0].bennianleijishu);
+
+                total = d24 + d25 + d27;
+                f15 = total / D5;
+
+                f15 = isNAN(f15);
+                SXFYZSRB[0].leijiwanchenghuoqimoshu = f15.ToString();
+
+                //h8
+
+                double e24 = 0;
+                double e25 = 0;
+                double e27 = 0;
+
+                if (xsfy.Count == 1 && xsfy[0].shangniantongqishu != "")
+                    e24 = Convert.ToDouble(xsfy[0].shangniantongqishu);
+                if (glfy.Count == 1 && glfy[0].shangniantongqishu != "")
+                    e25 = Convert.ToDouble(glfy[0].shangniantongqishu);
+                if (cwfy.Count == 1 && cwfy[0].shangniantongqishu != "")
+                    e27 = Convert.ToDouble(cwfy[0].shangniantongqishu);
+
+                total = e24 + e25 + e27;
+                H15 = total / E5;
+
+                H15 = isNAN(H15);
+                SXFYZSRB[0].shangniantongqileijiwancheng = H15.ToString();
+
+                double I15 = f15 - H15;
+                I15 = isNAN(I15);
+                SXFYZSRB[0].tongbizengzhang = I15.ToString();
+            }
+            #endregion
+
+            #region 全口径应收账款
+            List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> QKJYSZK = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("全口径应收账款"));
+            if (QKJYSZK.Count != 0 && QKJYSZK.Count == 1)
+            {
+
+                double C12 = 0;
+                double C24 = 0;
+                double C42 = 0;
+                double D12 = 0;
+                double D24 = 0;
+                double D42 = 0;
+                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "应收账款");
+                if (lr.Count == 1 && lr[0].qimojine != "")
+                {
+                    C12 = Convert.ToDouble(lr[0].qimojine) / 10000;
+
+                    D12 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;
+                }
+                List<clszichanfuzaibiaoinfo> lr2 = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "其他应收款");
+                if (lr2.Count == 1 && lr2[0].qimojine != "")
+                {
+                    C24 = Convert.ToDouble(lr2[0].qimojine) / 10000;
+                    D24 = Convert.ToDouble(lr2[0].shangniantongqishu) / 10000;
+                }
+                List<clszichanfuzaibiaoinfo> lr3 = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "长期应收款");
+                if (lr3.Count == 1 && lr3[0].qimojine != "")
+                {
+                    C42 = Convert.ToDouble(lr3[0].qimojine) / 10000;
+                    D42 = Convert.ToDouble(lr3[0].shangniantongqishu) / 10000;
+                }
+
+                double TT = C12 + C24 + C42;
+                QKJYSZK[0].benyuewancheng = TT.ToString();
+                QKJYSZK[0].leijiwanchenghuoqimoshu = TT.ToString();
+
+                double TT1 = D12 + D24 + D42;
+                QKJYSZK[0].shangniantongqileijiwancheng = TT1.ToString();
+
+
+
+            }
+            #endregion
+
+
+        }
+
+        private static double isNAN(double f5)
+        {
+            if (double.IsNaN(f5))
+            {
+                f5 = 0;
+
+
+            }
+            return f5;
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
