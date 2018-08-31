@@ -188,9 +188,10 @@ namespace BJ_FAautomaion
 
 
         }
-     
+
         private void Data_maintain()
         {
+            #region 主要经营指标完成情况
 
             #region 资产总额
             List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> cloumnlistSQ = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("资产总额"));
@@ -477,12 +478,12 @@ namespace BJ_FAautomaion
                 double f10 = 0;
                 double H10 = 0;
                 //资产总额--本月完成
-                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu=="应收账款");
+                List<clszichanfuzaibiaoinfo> lr = zichanfuzaibiao_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu == "应收账款");
                 if (lr.Count == 1 && lr[0].qimojine != "")
                 {
                     d10 = Convert.ToDouble(lr[0].qimojine) / 10000;
 
-                    H10 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;                    
+                    H10 = Convert.ToDouble(lr[0].shangniantongqishu) / 10000;
                 }
                 yszk[0].benyuewancheng = d10.ToString();
 
@@ -493,7 +494,7 @@ namespace BJ_FAautomaion
                 //同比增减
                 double I10 = d10 - H10;
 
-                yszk[0].tongbizengzhang = I10.ToString();                                
+                yszk[0].tongbizengzhang = I10.ToString();
             }
 
             #endregion
@@ -696,8 +697,8 @@ namespace BJ_FAautomaion
 
                 d15 = total / C5;
 
-                 d15 = isNAN(d15);
-              
+                d15 = isNAN(d15);
+
                 SXFYZSRB[0].benyuewancheng = d15.ToString();
                 //f8
                 double d24 = 0;
@@ -786,6 +787,167 @@ namespace BJ_FAautomaion
             #endregion
 
 
+            #endregion
+
+            #region 期间费用情况
+            #region 销售费用
+            List<clsQijianfeiyong_info> Qxsfy = qijianfeiyong_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("销售费用"));
+
+            if (Qxsfy.Count != 0 && Qxsfy.Count == 1)
+            {
+                double c24 = 0;
+                double d24 = 0;
+                double e24 = 0;
+                List<clsLirunjilirunfenpeibiao_info> xsfy = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("销售费用"));
+
+
+                if (xsfy.Count == 1 && xsfy[0].benyueshu != "")
+                    c24 = Convert.ToDouble(xsfy[0].benyueshu) / 10000;
+
+                c24 = isNAN(c24);
+                Qxsfy[0].benyueheji = c24.ToString();
+
+                if (xsfy.Count == 1 && xsfy[0].bennianleijishu != "")
+                    d24 = Convert.ToDouble(xsfy[0].bennianleijishu) / 10000;
+
+                d24 = isNAN(d24);
+                Qxsfy[0].bennianleiji = d24.ToString();
+
+                if (xsfy.Count == 1 && xsfy[0].shangniantongqishu != "")
+                    e24 = Convert.ToDouble(xsfy[0].shangniantongqishu) / 10000;
+                e24 = isNAN(e24);
+                Qxsfy[0].bennianleiji = e24.ToString();
+
+                double I4 = d24 - e24;
+                I4 = isNAN(I4);
+                Qxsfy[0].tongbizengjian = I4.ToString();
+
+
+            }
+            #endregion
+
+            #region 管理费用
+            List<clsQijianfeiyong_info> Gxsfy = qijianfeiyong_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("管理费用"));
+
+            if (Gxsfy.Count != 0 && Gxsfy.Count == 1)
+            {
+                double c25 = 0;
+                double d25 = 0;
+                double e25 = 0;
+                List<clsLirunjilirunfenpeibiao_info> glfy = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("管理费用"));
+
+                if (glfy.Count == 1 && glfy[0].benyueshu != "")
+                    c25 = Convert.ToDouble(glfy[0].benyueshu) / 10000;
+
+                c25 = isNAN(c25);
+                Gxsfy[0].benyueheji = c25.ToString();
+
+                if (glfy.Count == 1 && glfy[0].bennianleijishu != "")
+                    d25 = Convert.ToDouble(glfy[0].bennianleijishu);
+
+                d25 = isNAN(d25);
+                Gxsfy[0].bennianleiji = d25.ToString();
+
+                if (glfy.Count == 1 && glfy[0].shangniantongqishu != "")
+                    e25 = Convert.ToDouble(glfy[0].shangniantongqishu);
+
+                e25 = isNAN(e25);
+                Gxsfy[0].shangniantongqi = e25.ToString();
+
+                double I51 = d25 - e25;
+                I51 = isNAN(I51);
+                Gxsfy[0].tongbizengjian = I51.ToString();
+
+
+            }
+            #endregion
+
+            #region 财务费用
+            List<clsQijianfeiyong_info> Cxsfy = qijianfeiyong_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("财务费用"));
+
+            if (Cxsfy.Count != 0 && Cxsfy.Count == 1)
+            {
+                double c27 = 0;
+                double d27 = 0;
+                double e27 = 0;
+                List<clsLirunjilirunfenpeibiao_info> cwfy = Lirunjilirunfenpei_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("财务费用"));
+
+                if (cwfy.Count == 1 && cwfy[0].benyueshu != "")
+                    c27 = Convert.ToDouble(cwfy[0].benyueshu);
+
+                c27 = isNAN(c27);
+                Cxsfy[0].benyueheji = c27.ToString();
+
+                if (cwfy.Count == 1 && cwfy[0].bennianleijishu != "")
+                    d27 = Convert.ToDouble(cwfy[0].bennianleijishu);
+
+                d27 = isNAN(d27);
+                Cxsfy[0].bennianleiji = d27.ToString();
+
+                if (cwfy.Count == 1 && cwfy[0].shangniantongqishu != "")
+                    e27 = Convert.ToDouble(cwfy[0].shangniantongqishu);
+
+
+                e27 = isNAN(e27);
+                Cxsfy[0].shangniantongqi = e27.ToString();
+
+                double I6 = d27 - e27;
+                I6 = isNAN(I6);
+                Cxsfy[0].tongbizengjian = I6.ToString();
+
+
+            }
+            #endregion
+
+            #region 三项费用合计
+            List<clsQijianfeiyong_info> Sxsfy = qijianfeiyong_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("三项费用合计"));
+
+            if (Sxsfy.Count != 0 && Sxsfy.Count == 1)
+            {
+                double C = Convert.ToDouble(Qxsfy[0].benyueheji) + Convert.ToDouble(Gxsfy[0].benyueheji) + Convert.ToDouble(Cxsfy[0].benyueheji);
+
+                Cxsfy[0].benyueheji = C.ToString();
+
+                double F = Convert.ToDouble(Qxsfy[0].bennianleiji) + Convert.ToDouble(Gxsfy[0].bennianleiji) + Convert.ToDouble(Cxsfy[0].bennianleiji);
+
+                Cxsfy[0].bennianleiji = F.ToString();
+
+                double G = Convert.ToDouble(Qxsfy[0].shangniantongqi) + Convert.ToDouble(Gxsfy[0].shangniantongqi) + Convert.ToDouble(Cxsfy[0].shangniantongqi);
+
+                Cxsfy[0].shangniantongqi = G.ToString();
+
+                double I7 = F - G;
+                I7 = isNAN(I7);
+                Cxsfy[0].tongbizengjian = I7.ToString();
+
+            }
+            #endregion
+
+            #region 费用收入比
+            List<clsQijianfeiyong_info> Fxsfy = qijianfeiyong_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("三项费用合计"));
+
+            if (Fxsfy.Count != 0 && Fxsfy.Count == 1)
+            {
+              double C8 = Convert.ToDouble(Cxsfy[0].benyueheji) / Convert.ToDouble(SXFYZSRB[0].benyuewancheng);
+              C8 = isNAN(C8);
+              Fxsfy[0].benyueheji = C8.ToString();
+
+              double F8 = Convert.ToDouble(Cxsfy[0].bennianleiji) / Convert.ToDouble(yysr[0].leijiwanchenghuoqimoshu);
+              F8 = isNAN(F8);
+              Fxsfy[0].bennianleiji = C8.ToString();
+
+              double G8 = Convert.ToDouble(Cxsfy[0].shangniantongqi) / Convert.ToDouble(yysr[0].shangniantongqileijiwancheng);
+              G8 = isNAN(G8);
+              Fxsfy[0].shangniantongqi = G8.ToString();
+
+
+              double I8 = F8 - G8;
+              I8 = isNAN(I8);
+              Fxsfy[0].tongbizengjian = I8.ToString();
+            }
+            #endregion
+
+            #endregion
         }
 
         private static double isNAN(double f5)
