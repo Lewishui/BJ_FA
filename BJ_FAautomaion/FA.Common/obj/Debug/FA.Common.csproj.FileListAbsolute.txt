@@ -9,3 +9,8 @@ D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\bin\Debug\FA.Common.pdb
 D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\obj\Debug\FA.Common.csprojResolveAssemblyReference.cache
 D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\obj\Debug\FA.Common.dll
 D:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\obj\Debug\FA.Common.pdb
+F:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\bin\Debug\FA.Common.dll
+F:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\bin\Debug\FA.Common.pdb
+F:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\obj\Debug\FA.Common.csprojResolveAssemblyReference.cache
+F:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\obj\Debug\FA.Common.dll
+F:\mysteap\Devpro\BJ_FA\BJ_FAautomaion\FA.Common\obj\Debug\FA.Common.pdb
