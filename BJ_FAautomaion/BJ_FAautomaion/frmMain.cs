@@ -32,8 +32,6 @@ namespace BJ_FAautomaion
         List<clszichanfuzaibiaoinfo> zichanfuzaibiao_Result;
 
         List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zhuyao_Result;
-
-
         //财务 利润及利润分配表
         List<clsLirunjilirunfenpeibiao_info> Lirunjilirunfenpei_Result;
         //财务 现金流量表
@@ -126,7 +124,7 @@ namespace BJ_FAautomaion
                 // 数据读取成功后在画面显示
                 if (blnBackGroundWorkIsOK)
                 {
-                    InitializeOrderData(zichanfuzaibiao_Result, zhuyao_Result);
+                    InitializeOrderData(zichanfuzaibiao_Result, zhuyao_Result, qijianfeiyong_Result);
 
                 }
             }
@@ -1230,18 +1228,16 @@ namespace BJ_FAautomaion
             }
         }
 
-        private void InitializeOrderData(List<clszichanfuzaibiaoinfo> zichanfuzaibiao_Result, List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zhuyao_Result)
+        private void InitializeOrderData(List<clszichanfuzaibiaoinfo> zichanfuzaibiao_Result, List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zhuyao_Result, List<clsQijianfeiyong_info> qijianfeiyong_Result)
         {
             Data_maintain();
 
             this.dataGridView.DataSource = null;
             this.dataGridView.AutoGenerateColumns = false;
-
             if (zichanfuzaibiao_Result.Count != 0)
             {
                 sortablezichanfuzaibiaoList = new SortableBindingList<clszichanfuzaibiaoinfo>(zichanfuzaibiao_Result);
                 this.bindingSource1.DataSource = this.sortablezichanfuzaibiaoList;
-
 
                 this.dataGridView.DataSource = this.bindingSource1;
                 Show_label_pbStatus(zichanfuzaibiao_Result.Count, 0);
@@ -1259,15 +1255,86 @@ namespace BJ_FAautomaion
 
             if (zhuyao_Result.Count != 0)
             {
-
                 this.dataGridView1.DataSource = zhuyao_Result;
                 //Show_label_pbStatus(zhuyao_Result.Count, 0);
             }
+
+            #region 期间费用情况
+            this.dataGridView2.DataSource = null;
+            this.dataGridView2.AutoGenerateColumns = false;
+
+            if (qijianfeiyong_Result.Count != 0)
+            {
+                this.dataGridView2.DataSource = qijianfeiyong_Result;
+                
+            }
+            #endregion
+
+            #region 毛利率情况
+            this.dataGridView3.DataSource = null;
+            this.dataGridView3.AutoGenerateColumns = false;
+
+            if (maolilv_Result.Count != 0)
+            {
+                this.dataGridView3.DataSource = maolilv_Result;
+
+            }
+            #endregion
+            #region 存货情况
+            this.dataGridView4.DataSource = null;
+            this.dataGridView4.AutoGenerateColumns = false;
+
+            if (cunhuo_Result.Count != 0)
+            {
+                this.dataGridView4.DataSource = cunhuo_Result;
+
+            }
+            #endregion
+            #region 现金流净额
+            this.dataGridView5.DataSource = null;
+            this.dataGridView5.AutoGenerateColumns = false;
+
+            if (xianjinliuJINGE_Result.Count != 0)
+            {
+                this.dataGridView5.DataSource = xianjinliuJINGE_Result;
+
+            }
+            #endregion
+            #region 财务 利润及利润分配表
+            this.dataGridView6.DataSource = null;
+            this.dataGridView6.AutoGenerateColumns = false;
+
+            if (Lirunjilirunfenpei_Result.Count != 0)
+            {
+                this.dataGridView6.DataSource = Lirunjilirunfenpei_Result;
+
+            }
+            #endregion
+            #region 财务 现金流量表
+            this.dataGridView7.DataSource = null;
+            this.dataGridView7.AutoGenerateColumns = false;
+
+            if (Xianjinliu_Result.Count != 0)
+            {
+                this.dataGridView7.DataSource = Xianjinliu_Result;
+
+            }
+            #endregion
+            #region 八项费用支出表
+            this.dataGridView8.DataSource = null;
+            this.dataGridView8.AutoGenerateColumns = false;
+
+            if (baxiangfeiyong_Result.Count != 0)
+            {
+                this.dataGridView8.DataSource = baxiangfeiyong_Result;
+
+            }
+            #endregion
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            InitializeOrderData(zichanfuzaibiao_Result, zhuyao_Result);
+            InitializeOrderData(zichanfuzaibiao_Result, zhuyao_Result, qijianfeiyong_Result);
 
         }
 
@@ -1353,7 +1420,7 @@ namespace BJ_FAautomaion
             List<clszichanfuzaibiaoinfo> zcfzb = zichanfuzaibiao_Result.FindAll(sQ => (sQ.xiangmu != null && sQ.xiangmu.Contains(textBox6.Text)) || (sQ.xiangmuF != null && sQ.xiangmuF.Contains(textBox6.Text)));
             List<clszichanfuzaibiaoinfo> zcfzb3 = zcfzb.FindAll(sQ => Convert.ToDateTime(sQ.riqi) > Convert.ToDateTime(stockOutDateTimePicker.Text) && Convert.ToDateTime(sQ.riqi) < Convert.ToDateTime(stockInDateTimePicker1.Text));
 
-            InitializeOrderData(zcfzb3, zhuyao_Result);
+            InitializeOrderData(zcfzb3, zhuyao_Result, qijianfeiyong_Result);
 
         }
 
@@ -1418,6 +1485,11 @@ namespace BJ_FAautomaion
             string Showtime = clsShowMessage.MSG_029 + timei.ToString();
             bgWorker.ReportProgress(clsConstant.Thread_Progress_OK, clsShowMessage.MSG_015 + "\r\n" + Showtime);
 
+
+        }
+
+        private void tabPage7_Click(object sender, EventArgs e)
+        {
 
         }
 

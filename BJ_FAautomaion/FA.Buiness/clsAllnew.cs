@@ -500,12 +500,8 @@ namespace FA.Buiness
                         temp.qita_shangniantongqishu = "";
                         if (o[i, 28] != null)
                             temp.qita_shangniantongqishu = o[i, 28].ToString().Trim();
-
-
-
+                        
                         temp.Input_Date = DateTime.Now.ToString("yyyy/MM/dd");
-
-
 
                         temp.bianzhidanwei = "";
                         if (o[3, 1] != null)
@@ -553,27 +549,27 @@ namespace FA.Buiness
                         if (temp.xiangmu == null || temp.xiangmu == "")
                             continue;
                         temp.huanbizengjian = "";
-                        if (o[i, 3] != null)
+                        if (o[i, 3] != null && o[i, 3].ToString() != "-2146826281")
                             temp.huanbizengjian = o[i, 3].ToString().Trim();
 
 
                         temp.bennianleiji = "";
-                        if (o[i, 4] != null)
+                        if (o[i, 4] != null && o[i, 4].ToString() != "-2146826281")
                             temp.bennianleiji = o[i, 4].ToString().Trim();
 
 
                         temp.shangniantongqi = "";
-                        if (o[i, 5] != null)
+                        if (o[i, 5] != null && o[i, 5].ToString() != "-2146826281")
                             temp.shangniantongqi = o[i, 5].ToString().Trim();
 
                         temp.bennianleiji = "";
-                        if (o[i, 6] != null)
+                        if (o[i, 6] != null && o[i, 6].ToString() != "-2146826281")
                             temp.bennianleiji = o[i, 6].ToString().Trim();
 
 
                         temp.tongbizengjian = "";
-                        if (o[3, 1] != null)
-                            temp.tongbizengjian = o[3, 1].ToString().Trim();
+                        if (o[i, 7] != null && o[i, 7].ToString() != "-2146826281")
+                            temp.tongbizengjian = o[i, 7].ToString().Trim();
 
 
                         temp.Input_Date = DateTime.Now.ToString("yyyy/MM/dd");
@@ -587,7 +583,7 @@ namespace FA.Buiness
                     WS = (Microsoft.Office.Interop.Excel.Worksheet)analyWK.Worksheets["毛利率情况"];
 
                     rng = WS.Range[WS.Cells[1, 1], WS.Cells[WS.UsedRange.Rows.Count, 16]];
-                    rowCount = WS.UsedRange.Rows.Count ;
+                    rowCount = WS.UsedRange.Rows.Count;
                     o = new object[1, 1];
                     o = (object[,])rng.Value2;
                     wscount = analyWK.Worksheets.Count;
@@ -620,14 +616,16 @@ namespace FA.Buiness
                         temp.shangniantongqi = "";
                         if (o[i, 5] != null)
                             temp.shangniantongqi = o[i, 5].ToString().Trim();
+                        if (temp.shangniantongqi == "-2146826281")
+                            temp.shangniantongqi = "0";
 
                         temp.bennianleiji = "";
                         if (o[i, 6] != null)
                             temp.bennianleiji = o[i, 6].ToString().Trim();
 
                         temp.tongbizengjian = "";
-                        if (o[3, 1] != null)
-                            temp.tongbizengjian = o[3, 1].ToString().Trim();
+                        if (o[i, 7] != null)
+                            temp.tongbizengjian = o[i, 7].ToString().Trim();
 
 
                         temp.Input_Date = DateTime.Now.ToString("yyyy/MM/dd");
@@ -640,7 +638,7 @@ namespace FA.Buiness
                     WS = (Microsoft.Office.Interop.Excel.Worksheet)analyWK.Worksheets["存货情况"];
 
                     rng = WS.Range[WS.Cells[1, 1], WS.Cells[WS.UsedRange.Rows.Count, 16]];
-                    rowCount = WS.UsedRange.Rows.Count ;
+                    rowCount = WS.UsedRange.Rows.Count;
                     o = new object[1, 1];
                     o = (object[,])rng.Value2;
                     wscount = analyWK.Worksheets.Count;
@@ -658,7 +656,7 @@ namespace FA.Buiness
                         temp.benyuexinzheng = "";
                         if (o[i, 2] != null)
                             temp.benyuexinzheng = o[i, 2].ToString().Trim();
-                        if (temp.benyuexinzheng == null || temp.benyuexinzheng == "")
+                        if (temp.xiangmu == null || temp.xiangmu == "")
                             continue;
                         temp.huanbizengjian = "";
                         if (o[i, 3] != null)
@@ -679,8 +677,8 @@ namespace FA.Buiness
                             temp.bennianleiji = o[i, 6].ToString().Trim();
 
                         temp.tongbizengjian = "";
-                        if (o[3, 1] != null)
-                            temp.tongbizengjian = o[3, 1].ToString().Trim();
+                        if (o[i, 7] != null)
+                            temp.tongbizengjian = o[i, 7].ToString().Trim();
                         temp.Input_Date = DateTime.Now.ToString("yyyy/MM/dd");
 
                         #endregion
@@ -693,7 +691,7 @@ namespace FA.Buiness
                     WS = (Microsoft.Office.Interop.Excel.Worksheet)analyWK.Worksheets["现金流净额"];
 
                     rng = WS.Range[WS.Cells[1, 1], WS.Cells[WS.UsedRange.Rows.Count, 16]];
-                    rowCount = WS.UsedRange.Rows.Count ;
+                    rowCount = WS.UsedRange.Rows.Count;
                     o = new object[1, 1];
                     o = (object[,])rng.Value2;
                     wscount = analyWK.Worksheets.Count;
@@ -718,7 +716,7 @@ namespace FA.Buiness
                             temp.shangnianjine = o[i, 3].ToString().Trim();
                         temp.tongbibiandong = "";
                         if (o[i, 4] != null)
-                            temp.tongbibiandong = o[i, 4].ToString().Trim();                     
+                            temp.tongbibiandong = o[i, 4].ToString().Trim();
                         temp.Input_Date = DateTime.Now.ToString("yyyy/MM/dd");
 
                         #endregion
