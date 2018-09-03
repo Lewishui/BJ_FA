@@ -1164,8 +1164,7 @@ namespace FA.Buiness
                         RowIndex++;
                         if (zcfzb.Count > 0)
                         {
-                            ExcelApp.Visible = true;
-                            ExcelApp.ScreenUpdating = true;
+                          
 
                             double nullableQty = (from s in zcfzb
                                                   where s.hangci != null && s.hangci != "" && s.hangci != "－"
