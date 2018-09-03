@@ -55,6 +55,11 @@
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtSAPUserId = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -141,6 +146,7 @@
             this.btmain.Name = "btmain";
             this.btmain.Size = new System.Drawing.Size(144, 26);
             this.btmain.Text = "在线打印";
+            this.btmain.Click += new System.EventHandler(this.btmain_Click);
             // 
             // toolStripDropDownButton1
             // 
@@ -160,7 +166,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.toolStripDropDownButton2,
-            this.toolStripDropDownButton3});
+            this.toolStripDropDownButton3,
+            this.tsbLogin,
+            this.toolStripLabel2,
+            this.toolStripSeparator1,
+            this.txtSAPUserId,
+            this.toolStripLabel1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1023, 28);
@@ -196,6 +207,48 @@
             this.panel1.Size = new System.Drawing.Size(1023, 495);
             this.panel1.TabIndex = 12;
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 23);
+            this.toolStripLabel1.Text = "用户名：";
+            // 
+            // txtSAPUserId
+            // 
+            this.txtSAPUserId.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.txtSAPUserId.Name = "txtSAPUserId";
+            this.txtSAPUserId.Size = new System.Drawing.Size(100, 28);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(44, 25);
+            this.toolStripLabel2.Text = "密码：";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // tsbLogin
+            // 
+            this.tsbLogin.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLogin.BackColor = System.Drawing.Color.White;
+            this.tsbLogin.DoubleClickEnabled = true;
+            this.tsbLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbLogin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.tsbLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLogin.Name = "tsbLogin";
+            this.tsbLogin.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+            this.tsbLogin.Size = new System.Drawing.Size(48, 25);
+            this.tsbLogin.Text = "登录";
+            this.tsbLogin.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.tsbLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbLogin.Click += new System.EventHandler(this.tsbLogin_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -227,6 +280,11 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripButton tsbLogin;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox txtSAPUserId;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripLabel1;
     }
 }
 

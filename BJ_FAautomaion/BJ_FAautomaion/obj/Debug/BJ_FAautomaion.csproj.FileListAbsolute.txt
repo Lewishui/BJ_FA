@@ -20,7 +20,6 @@ D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.exe
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\BJ_FAautomaion.pdb
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\IrisSkin2.dll
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\log4net.dll
-D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\Microsoft.Office.Interop.Excel.dll
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.csprojResolveAssemblyReference.cache
 D:\Dev Project\BJ_FA\BJ_FAautomaion\BJ_FAautomaion\obj\Debug\BJ_FAautomaion.frmAboutBox.resources

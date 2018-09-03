@@ -80,6 +80,7 @@ namespace FA.DB
         public string riqi { get; set; }
         public string danwei { get; set; }
 
+        public string rowindex { get; set; }
 
     }
 
@@ -96,6 +97,9 @@ namespace FA.DB
         public string riqi { get; set; }
         public string danwei { get; set; }
 
+        public string rowindex { get; set; }
+
+        
 
     }
     public class cls8xiangfeiyongzhichu_info
@@ -136,6 +140,11 @@ namespace FA.DB
         public string bianzhidanwei { get; set; }
         public string riqi { get; set; }
         public string danwei { get; set; }
+
+
+
+        public string rowindex { get; set; }
+
 
     }
     public class clsQijianfeiyong_info

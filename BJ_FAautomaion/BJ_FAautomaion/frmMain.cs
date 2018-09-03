@@ -57,10 +57,16 @@ namespace BJ_FAautomaion
         private SortableBindingList<clszichanfuzaibiaoinfo> sortablezichanfuzaibiaoList;
         string strFileName;
 
+        string user_or_admin;
 
-        public frmMain()
+        public frmMain(string logintype)
         {
             InitializeComponent();
+            user_or_admin = logintype;
+            if (logintype == "admin")
+                toolStripButton3.Visible = true;
+
+
         }
 
         private void InitialBackGroundWorker()
@@ -106,6 +112,16 @@ namespace BJ_FAautomaion
 
         private void 读取_Click(object sender, EventArgs e)
         {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Resources";
+            clsAllnew BusinessHelp = new clsAllnew();
+
+            List<string> Alist = BusinessHelp.GetBy_CategoryReportFileName(path);
+
+            if (Alist.Count > 1 && user_or_admin != "admin")
+            {
+                MessageBox.Show("权限不足 ,不能批量作业", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             try
             {
@@ -259,23 +275,34 @@ namespace BJ_FAautomaion
             #endregion
 
             #region 资产负债率
-            double d5 = Convert.ToDouble(fz[0].benyuewancheng) / Convert.ToDouble(cloumnlistSQ[0].benyuewancheng);
+            double d5 = 0;
+            if (fz.Count > 0 && fz[0].benyuewancheng != null && fz[0].benyuewancheng != "" && cloumnlistSQ[0].benyuewancheng != null && cloumnlistSQ[0].benyuewancheng != "")
+                d5 = Convert.ToDouble(fz[0].benyuewancheng) / Convert.ToDouble(cloumnlistSQ[0].benyuewancheng);
             d5 = isNAN(d5);
 
             List<clszhuyaojingyingzhibiaowanchengqingkuanginfo> zcfzl = zhuyao_Result.FindAll(sQ => sQ.zhibiaomingcheng != null && sQ.zhibiaomingcheng.Contains("资产负债率"));
-            zcfzl[0].benyuewancheng = d5.ToString();
+            if (zcfzl.Count > 0)
+                zcfzl[0].benyuewancheng = d5.ToString();
+            double f5 = 0;
 
-            double f5 = Convert.ToDouble(fz[0].leijiwanchenghuoqimoshu) / Convert.ToDouble(cloumnlistSQ[0].leijiwanchenghuoqimoshu);
+            if (fz.Count>0&&fz[0].leijiwanchenghuoqimoshu != null && fz[0].leijiwanchenghuoqimoshu != "" && cloumnlistSQ[0].leijiwanchenghuoqimoshu != null && cloumnlistSQ[0].leijiwanchenghuoqimoshu != "")
+
+                f5 = Convert.ToDouble(fz[0].leijiwanchenghuoqimoshu) / Convert.ToDouble(cloumnlistSQ[0].leijiwanchenghuoqimoshu);
 
             f5 = isNAN(f5);
+            if (zcfzl.Count > 0)
             zcfzl[0].leijiwanchenghuoqimoshu = f5.ToString();
+            double h5 = 0;
+            if (fz.Count > 0)
+            if (fz[0].shangniantongqileijiwancheng != null && fz[0].shangniantongqileijiwancheng != "" && cloumnlistSQ[0].shangniantongqileijiwancheng != null && cloumnlistSQ[0].shangniantongqileijiwancheng != "")
 
-            double h5 = Convert.ToDouble(fz[0].shangniantongqileijiwancheng) / Convert.ToDouble(cloumnlistSQ[0].shangniantongqileijiwancheng);
+                h5 = Convert.ToDouble(fz[0].shangniantongqileijiwancheng) / Convert.ToDouble(cloumnlistSQ[0].shangniantongqileijiwancheng);
             h5 = isNAN(h5);
+            if (zcfzl.Count > 0)
             zcfzl[0].shangniantongqileijiwancheng = h5.ToString();
 
             double I5 = f5 - h5;
-
+            if (zcfzl.Count > 0)
             zcfzl[0].tongbizengzhang = I5.ToString();
             #endregion
 
@@ -626,7 +653,8 @@ namespace BJ_FAautomaion
                 if (lr.Count == 1 && lr[0].benyueshu != "")
                     G51 = Convert.ToDouble(lr[0].benyueshu);
 
-                d14 = G51 / Convert.ToDouble(JZC[0].benyuewancheng);
+                if (JZC[0].benyuewancheng != null && JZC[0].benyuewancheng != "")
+                    d14 = G51 / Convert.ToDouble(JZC[0].benyuewancheng);
                 d14 = isNAN(d14);
                 JZCSYL[0].benyuewancheng = d14.ToString();
 
@@ -635,16 +663,18 @@ namespace BJ_FAautomaion
 
                 if (lr2.Count == 1 && lr2[0].bennianleijishu != "")
                     D51 = Convert.ToDouble(lr2[0].bennianleijishu);
+                if (JZC[0].leijiwanchenghuoqimoshu != null && JZC[0].leijiwanchenghuoqimoshu != "")
 
-                f14 = D51 / 10000 / Convert.ToDouble(JZC[0].leijiwanchenghuoqimoshu);
+                    f14 = D51 / 10000 / Convert.ToDouble(JZC[0].leijiwanchenghuoqimoshu);
 
                 f14 = isNAN(f14);
                 JZCSYL[0].leijiwanchenghuoqimoshu = f14.ToString();
                 //H14
                 if (lr2.Count == 1 && lr2[0].shangniantongqi != "")
                     E51 = Convert.ToDouble(lr2[0].shangniantongqi);
+                if (JZC[0].shangniantongqileijiwancheng != null && JZC[0].shangniantongqileijiwancheng != "")
 
-                H14 = E51 / 10000 / Convert.ToDouble(JZC[0].shangniantongqileijiwancheng);
+                    H14 = E51 / 10000 / Convert.ToDouble(JZC[0].shangniantongqileijiwancheng);
                 H14 = isNAN(H14);
 
                 JZCSYL[0].shangniantongqileijiwancheng = H14.ToString();
@@ -961,8 +991,9 @@ namespace BJ_FAautomaion
                 Myysr[0].bennianleiji = yysr[0].leijiwanchenghuoqimoshu;
                 //e4
                 Myysr[0].shangniantongqi = yysr[0].shangniantongqileijiwancheng;
-
-                double F4 = Convert.ToDouble(Myysr[0].bennianleiji) - Convert.ToDouble(Myysr[0].shangniantongqi);
+                double F4 = 0;
+                if (Myysr[0].bennianleiji != null && Myysr[0].bennianleiji != "" && Myysr[0].shangniantongqi != null && Myysr[0].shangniantongqi != "")
+                    F4 = Convert.ToDouble(Myysr[0].bennianleiji) - Convert.ToDouble(Myysr[0].shangniantongqi);
                 F4 = isNAN(F4);
                 Myysr[0].tongbizengjian = F4.ToString();
             }
@@ -1039,15 +1070,22 @@ namespace BJ_FAautomaion
             List<clsmaolilv_info> MLL = maolilv_Result.FindAll(sQ => sQ.xiangmu != null && sQ.xiangmu.Contains("毛利率"));
             if (MLL.Count != 0 && MLL.Count == 1)
             {
-                double C9 = Convert.ToDouble(ML[0].benyueheji) / Convert.ToDouble(Myysr[0].benyueheji);
+                double C9 = 0;
+                double D9 = 0;
+                double E9 = 0;
+                if (ML[0].benyueheji != null && ML[0].benyueheji != "" && Myysr[0].benyueheji != null && Myysr[0].benyueheji != "")
+                    C9 = Convert.ToDouble(ML[0].benyueheji) / Convert.ToDouble(Myysr[0].benyueheji);
                 C9 = isNAN(C9);
                 MLL[0].benyueheji = C9.ToString();
+                if (ML[0].bennianleiji != null && ML[0].bennianleiji != "" && Myysr[0].bennianleiji != null && Myysr[0].bennianleiji != "")
 
-                double D9 = Convert.ToDouble(ML[0].bennianleiji) / Convert.ToDouble(Myysr[0].bennianleiji);
+                    D9 = Convert.ToDouble(ML[0].bennianleiji) / Convert.ToDouble(Myysr[0].bennianleiji);
                 D9 = isNAN(D9);
                 ML[0].bennianleiji = D9.ToString();
+                if (ML[0].benyueheji != null && ML[0].benyueheji != "" && Myysr[0].benyueheji != null && Myysr[0].benyueheji != "")
+                    if (ML[0].shangniantongqi != null && ML[0].shangniantongqi != "" && Myysr[0].shangniantongqi != null && Myysr[0].shangniantongqi != "")
 
-                double E9 = Convert.ToDouble(ML[0].shangniantongqi) / Convert.ToDouble(Myysr[0].shangniantongqi);
+                        E9 = Convert.ToDouble(ML[0].shangniantongqi) / Convert.ToDouble(Myysr[0].shangniantongqi);
                 E9 = isNAN(E9);
                 ML[0].shangniantongqi = E9.ToString();
 
@@ -1090,14 +1128,14 @@ namespace BJ_FAautomaion
                     C30 = Convert.ToDouble(lr[0].bennianjine) / 10000;
 
                     C30 = isNAN(C30);
-                      
+
                 }
-                XJLJE[0].bennianjine = C30.ToString();          
+                XJLJE[0].bennianjine = C30.ToString();
                 if (lr.Count == 1 && lr[0].shangnianjine != "")
                 {
                     D30 = Convert.ToDouble(lr[0].shangnianjine) / 10000;
                     D30 = isNAN(D30);
-                   
+
                 }
                 XJLJE[0].bennianjine = D30.ToString();
 
@@ -1266,7 +1304,7 @@ namespace BJ_FAautomaion
             if (qijianfeiyong_Result.Count != 0)
             {
                 this.dataGridView2.DataSource = qijianfeiyong_Result;
-                
+
             }
             #endregion
 
@@ -1467,17 +1505,7 @@ namespace BJ_FAautomaion
         {
             DateTime oldDate = DateTime.Now;
 
-            //初始化信息
-            clsAllnew BusinessHelp = new clsAllnew();
-
-            BusinessHelp.InitializeDataSource(zichanfuzaibiao_Result, zhuyao_Result);
-
-            BusinessHelp.pbStatus = pbStatus;
-            BusinessHelp.tsStatusLabel1 = toolStripLabel1;
-            BusinessHelp.DownLoadExcel(ref this.bgWorker, strFileName);
-
-            //暂停
-            BusinessHelp.DownLoadPDF(ref this.bgWorker, strFileName);
+            NewMethod();
 
             DateTime FinishTime = DateTime.Now;
             TimeSpan s = DateTime.Now - oldDate;
@@ -1488,11 +1516,118 @@ namespace BJ_FAautomaion
 
         }
 
+        private void NewMethod()
+        {
+            //初始化信息
+            clsAllnew BusinessHelp = new clsAllnew();
+
+            BusinessHelp.InitializeDataSource(zichanfuzaibiao_Result, zhuyao_Result, Lirunjilirunfenpei_Result, Xianjinliu_Result, baxiangfeiyong_Result, qijianfeiyong_Result, maolilv_Result, cunhuo_Result, xianjinliuJINGE_Result
+);
+
+            BusinessHelp.pbStatus = pbStatus;
+            BusinessHelp.tsStatusLabel1 = toolStripLabel1;
+            BusinessHelp.DownLoadExcel(ref this.bgWorker, strFileName);
+
+            //暂停
+            BusinessHelp.DownLoadPDF(ref this.bgWorker, strFileName);
+        }
+
         private void tabPage7_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("请将要合并的文件一并放入弹出文件夹内，请注意文件格式要统一否则可能导致错误 ！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            string ZFCEPath = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FileList"), "");
+            System.Diagnostics.Process.Start("explorer.exe", ZFCEPath);
+            MessageBox.Show("存放完毕，继续进行？", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            clsAllnew BusinessHelp = new clsAllnew();
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "FileList";
+            List<string> Alist = BusinessHelp.GetBy_CategoryReportFileName(path);
+            if (Alist.Count < 1)
+            {
+                MessageBox.Show("没有找到文件 ！", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = ".xlsx";
+            saveFileDialog.Filter = "Excel Files(*.xls,*.xlsx,*.xlsm,*.xlsb)|*.xls;*.xlsx;*.xlsm;*.xlsb";
+            strFileName = "System  Info" + "_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            saveFileDialog.FileName = strFileName;
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                strFileName = saveFileDialog.FileName.ToString();
+            }
+            else
+            {
+                return;
+            }
+
+
+            try
+            {
+                InitialBackGroundWorker();
+                bgWorker.DoWork += new DoWorkEventHandler(combine_eport);
+                bgWorker.RunWorkerAsync();
+                // 启动消息显示画面
+                frmMessageShow = new frmMessageShow(clsShowMessage.MSG_001,
+                                                    clsShowMessage.MSG_007,
+                                                    clsConstant.Dialog_Status_Disable);
+                frmMessageShow.ShowDialog();
+                // 数据读取成功后在画面显示
+                if (blnBackGroundWorkIsOK)
+                {
+                    //string ZFCEPath = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Results"), "");
+                    //System.Diagnostics.Process.Start("explorer.exe", strFileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ex" + ex);
+                return;
+                throw ex;
+            }
+
+
+
+        }
+        private void combine_eport(object sender, DoWorkEventArgs e)
+        {
+            DateTime oldDate = DateTime.Now;
+
+            //初始化信息
+            clsAllnew BusinessHelp = new clsAllnew();
+
+            BusinessHelp.pbStatus = pbStatus;
+            BusinessHelp.tsStatusLabel1 = toolStripLabel1;
+            BusinessHelp.ReadEv_Datasources(ref this.bgWorker, "");
+
+            zhuyao_Result = BusinessHelp.zhuyao_Result;
+            zichanfuzaibiao_Result = BusinessHelp.zichanfuzaibiao_Result;
+            Lirunjilirunfenpei_Result = BusinessHelp.Lirunjilirunfenpei_Result;
+            baxiangfeiyong_Result = BusinessHelp.baxiangfeiyong_Result;
+            Xianjinliu_Result = BusinessHelp.Xianjinliu_Result;
+            qijianfeiyong_Result = BusinessHelp.qijianfeiyong_Result;
+            cunhuo_Result = BusinessHelp.cunhuo_Result;
+            xianjinliuJINGE_Result = BusinessHelp.xianjinliu_Result;
+            maolilv_Result = BusinessHelp.maolilv_Result;
+
+            NewMethod();
+
+            DateTime FinishTime = DateTime.Now;
+            TimeSpan s = DateTime.Now - oldDate;
+            string timei = s.Minutes.ToString() + ":" + s.Seconds.ToString();
+            string Showtime = clsShowMessage.MSG_029 + timei.ToString();
+            bgWorker.ReportProgress(clsConstant.Thread_Progress_OK, clsShowMessage.MSG_015 + "\r\n" + Showtime);
+
+
+        }
 
     }
 }
