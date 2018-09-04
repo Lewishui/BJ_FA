@@ -64,9 +64,19 @@ namespace BJ_FAautomaion
             InitializeComponent();
             user_or_admin = logintype;
             if (logintype == "admin")
+            {
                 toolStripButton3.Visible = true;
 
+            }
+            else
+            {
+                dataGridView1.Enabled = false;
+                dataGridView2.Enabled = false;
+                dataGridView3.Enabled = false;
+                dataGridView4.Enabled = false;
+                dataGridView5.Enabled = false;
 
+            }
         }
 
         private void InitialBackGroundWorker()

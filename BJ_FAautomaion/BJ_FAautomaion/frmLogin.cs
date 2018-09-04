@@ -32,8 +32,8 @@ namespace BJ_FAautomaion
             aboutbox = new frmAboutBox();
             InitialPassword();
 
-            this.txtSAPUserId.Text = "admin";
-            this.txtSAPPassword.Text = "000000";
+            //this.txtSAPUserId.Text = "admin";
+            //this.txtSAPPassword.Text = "000000";
 
         }
 
