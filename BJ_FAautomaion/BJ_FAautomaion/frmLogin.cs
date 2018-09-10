@@ -99,6 +99,8 @@ namespace BJ_FAautomaion
         }
         private void tsbLogin_Click(object sender, EventArgs e)
         {
+            usrlin = "";
+
             if (this.txtSAPUserId.Text == "admin" || this.txtSAPUserId.Text == "user")
             {
                 if (this.txtSAPPassword.Text == "000000")
@@ -115,7 +117,10 @@ namespace BJ_FAautomaion
                     toolStripDropDownButton1.Enabled = false;
                     toolStripDropDownButton2.Enabled = true;
                 }
-                MessageBox.Show("登录成功！");
+                if (usrlin != "")
+                    MessageBox.Show("登录成功！");
+                else
+                    MessageBox.Show("登录失败！");
             }
             else
             {

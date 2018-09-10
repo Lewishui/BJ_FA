@@ -29,10 +29,10 @@ namespace BJ_FAautomaion
             int timeTotal = ts.Days;
             if (timeTotal < 0)
             {
-                MessageBox.Show("Error 测试版本已到期，请更新正式版本使用");
-                Application.Exit();
+                //MessageBox.Show("Error 测试版本已到期，请更新正式版本使用");
+                //Application.Exit();
 
-                return;
+                //return;
             }
             #endregion
             Application.Run(new frmLogin());
